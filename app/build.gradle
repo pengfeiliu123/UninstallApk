@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 25
@@ -22,15 +23,16 @@ android {
         release {
             storeFile file("uninstall.jks")
             storePassword "lpf123"
-            keyAlias "uninstall"
+            keyAlias "uninstallapk"
             keyPassword "lpf123"
         }
 
         debug {
             storeFile file("uninstall.jks")
             storePassword "lpf123"
-            keyAlias "uninstall"
+            keyAlias "uninstallapk"
             keyPassword "lpf123"
+
         }
     }
 
@@ -78,4 +80,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:recyclerview-v7:25.1.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
+    compile 'com.google.android.gms:play-services:9.0.0'
 }
