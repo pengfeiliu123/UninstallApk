@@ -71,16 +71,18 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.AppViewHolder> {
     }
 
     private void changeClickStated(boolean isChecked, int position, AppViewHolder holder) {
-        AppInfo appInfo = datas.get(position);
-        if (isChecked) {
-            if (!checkPositionlist.contains(holder.appCheck.getTag())) {
-                checkedDatas.add(appInfo);
-                checkPositionlist.add(new Integer(position));
-            }
-        } else {
-            if (checkPositionlist.contains(holder.appCheck.getTag())) {
-                checkedDatas.remove(appInfo);
-                checkPositionlist.remove(new Integer(position));
+        if(position < datas.size()){
+            AppInfo appInfo = datas.get(position);
+            if (isChecked) {
+                if (!checkPositionlist.contains(holder.appCheck.getTag())) {
+                    checkedDatas.add(appInfo);
+                    checkPositionlist.add(new Integer(position));
+                }
+            } else {
+                if (checkPositionlist.contains(holder.appCheck.getTag())) {
+                    checkedDatas.remove(appInfo);
+                    checkPositionlist.remove(new Integer(position));
+                }
             }
         }
     }
@@ -134,6 +136,12 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.AppViewHolder> {
 
     // select all datas
     public void selectedAllDatas() {
+        if (checkedDatas != null) {
+            checkedDatas.clear();
+        }
+        if (checkPositionlist != null) {
+            checkPositionlist.clear();
+        }
         checkedDatas.addAll(datas);
         for (int i = 0; i < datas.size(); i++) {
             checkPositionlist.add(i);
