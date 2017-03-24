@@ -3,7 +3,7 @@ apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'com.google.gms.google-services'
 
 def versionMajor = 1
-def versionBuild = 02
+def versionBuild = 5
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
@@ -28,6 +28,7 @@ android {
             storePassword "lpf123"
             keyAlias "uninstallapk"
             keyPassword "lpf123"
+            v2SigningEnabled false
         }
 
         debug {
@@ -35,6 +36,7 @@ android {
             storePassword "lpf123"
             keyAlias "uninstallapk"
             keyPassword "lpf123"
+            v2SigningEnabled false
 
         }
     }

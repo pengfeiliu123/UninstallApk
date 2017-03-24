@@ -13,6 +13,7 @@ public class AppInfo implements Comparable {
     public Drawable appIcon;
     public Intent appIntent;
     public String verionCode;
+    public String memorySize;
     public boolean checked = false;
 
     public long time;
@@ -71,6 +72,14 @@ public class AppInfo implements Comparable {
 
     public void setTime(Long time) {
         this.time = time;
+    }
+
+    public String getMemorySize() {
+        return memorySize;
+    }
+
+    public void setMemorySize(String memorySize) {
+        this.memorySize = memorySize;
     }
 
     @Override

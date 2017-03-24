@@ -1,12 +1,9 @@
 <resources>
     <string name="app_name">UninstallApk</string>
 
-    <string name="banner_ad_unit_id_1">ca-app-pub-7702253890707460/3996348638</string>
-    <string name="banner_ad_unit_id_2">ca-app-pub-7702253890707460/8215908633</string>
-    <string name="banner_ad_unit_id_3">ca-app-pub-7702253890707460/9692641831</string>
-    <string name="banner_ad_unit_id_4">ca-app-pub-7702253890707460/2169375030</string>
-    <string name="banner_ad_unit_id_5">ca-app-pub-7702253890707460/3646108231</string>
-    <string name="tv_installed">Installed Apk</string>
-    <string name="btn_delete">Delete</string>
+    <string name="banner_ad_unit_id_1">ca-app-pub-7702253890707460/3646108231</string>
+    <string name="tv_installed">Installed Apks</string>
+    <string name="btn_delete">Uninstall</string>
+    <string name="toast_choose">Please Choose Apps</string>
     <!--<string name="banner_ad_unit_id">ca-app-pub-7702253890707460/3996348638</string>-->
 </resources>

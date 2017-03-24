@@ -21,17 +21,36 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="10dp"
-        android:orientation="vertical"
         android:layout_toLeftOf="@+id/appCheck"
-        android:layout_toRightOf="@id/appIcon">
+        android:layout_toRightOf="@id/appIcon"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/appName"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="测试name"
-            android:textColor="@android:color/black"
-            android:textStyle="bold" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/appName"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="测试name"
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
+
+            <!--<TextView-->
+                <!--android:id="@+id/memorySize"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_weight="1"-->
+                <!--android:lines="1"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="memorySize"-->
+                <!--android:textColor="@android:color/black"-->
+                <!--android:textStyle="bold" />-->
+
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/pgkName"

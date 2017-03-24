@@ -43,6 +43,7 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.AppViewHolder> {
         holder.appName.setText(appInfo.getAppName());
         holder.pgkName.setText(appInfo.getPkgName());
         holder.versionCode.setText(appInfo.getVerionCode());
+//        holder.memorySize.setText(appInfo.getMemorySize());
         holder.appIcon.setImageDrawable(appInfo.getAppIcon());
         holder.appCheck.setTag(new Integer(position));
 
@@ -99,6 +100,7 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.AppViewHolder> {
         public ImageView appIcon;
         public CheckBox appCheck;
         public TextView versionCode;
+//        public TextView memorySize;
 
         public AppViewHolder(View itemView) {
             super(itemView);
@@ -106,6 +108,7 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.AppViewHolder> {
             appName = (TextView) itemView.findViewById(R.id.appName);
             pgkName = (TextView) itemView.findViewById(R.id.pgkName);
             versionCode = (TextView) itemView.findViewById(R.id.versionCode);
+//            memorySize = (TextView)itemView.findViewById(R.id.memorySize);
             appIcon = (ImageView) itemView.findViewById(R.id.appIcon);
             appCheck = (CheckBox) itemView.findViewById(R.id.appCheck);
         }
