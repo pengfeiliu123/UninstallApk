@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<AppInfo> appList = new ArrayList<AppInfo>();
     RecyclerView recyclerView;
     AppAdapter appAdapter;
-    Button btnDelete;
+    LinearLayout btnDelete;
     CheckBox btnCheckAll;
     AppInfo mAppInfo;
 
@@ -59,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(appAdapter);
         appAdapter.notifyDataSetChanged();
 
-        btnDelete = (Button) findViewById(R.id.deleteBtn);
+        btnDelete = (LinearLayout) findViewById(R.id.deleteBtn);
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,11 +91,12 @@ public class MainActivity extends AppCompatActivity {
     private void initAds() {
 
 //        AdView mAdView1 = (AdView)findViewById(R.id.adView1);
-        AdView mAdView2 = (AdView)findViewById(R.id.adView2);
-        AdRequest adRequest = new AdRequest.Builder().build();
 //        AdRequest adRequest2 = new AdRequest.Builder().build();
 //        mAdView1.loadAd(adRequest);
-        mAdView2.loadAd(adRequest);
+
+//        AdView mAdView2 = (AdView)findViewById(R.id.adView2);
+//        AdRequest adRequest = new AdRequest.Builder().build();
+//        mAdView2.loadAd(adRequest);
 
     }
 
