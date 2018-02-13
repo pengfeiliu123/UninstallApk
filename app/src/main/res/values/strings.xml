@@ -2,7 +2,7 @@
     <string name="app_name">UninstallApk</string>
 
     <string name="banner_ad_unit_id_1">ca-app-pub-7702253890707460/3646108231</string>
-    <string name="tv_installed">Installed Apks</string>
+    <string name="tv_installed">Apps</string>
     <string name="btn_delete">Uninstall</string>
     <string name="toast_choose">Please Choose Apps</string>
     <!--<string name="banner_ad_unit_id">ca-app-pub-7702253890707460/3996348638</string>-->

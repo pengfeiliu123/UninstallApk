@@ -1,6 +1,8 @@
 package com.lpf.uninstall;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,8 +60,9 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.AppViewHolder> {
         holder.appItemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean isChecked = holder.appCheck.isChecked() ? false : true;
-                holder.appCheck.setChecked(isChecked);
+//                boolean isChecked = holder.appCheck.isChecked() ? false : true;
+//                holder.appCheck.setChecked(isChecked);
+                openAppSettings(appInfo.pkgName);
             }
         });
 
@@ -69,6 +72,13 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.AppViewHolder> {
                 changeClickStated(isChecked, position, holder);
             }
         });
+    }
+
+    private void openAppSettings(String packageName) {
+        Intent intent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
+        intent.setData(Uri.parse("package:" + packageName));
+        mContext.startActivity(intent);
+        ((MainActivity)mContext).overridePendingTransition(R.anim.slide_right_in,R.anim.slide_left_out);
     }
 
     private void changeClickStated(boolean isChecked, int position, AppViewHolder holder) {

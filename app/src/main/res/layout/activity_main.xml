@@ -1,41 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginBottom="8dp"
-    android:layout_marginEnd="16dp"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
-    android:layout_marginStart="16dp"
-    android:layout_marginTop="16dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
+    android:orientation="vertical"
     tools:context="com.lpf.uninstall.MainActivity">
 
-    <TextView
-        android:id="@+id/header"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:text="@string/tv_installed"
-        android:textSize="18dp"
-        android:textStyle="bold" />
+        android:orientation="horizontal">
 
-    <CheckBox
-        android:id="@+id/checkAll"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@id/header"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:background="@null" />
+        <TextView
+            android:id="@+id/header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:text="@string/tv_installed"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <CheckBox
+            android:id="@+id/checkAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/header"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:background="@null" />
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/content_rv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="8dp" />
 
     <LinearLayout
         android:id="@+id/deleteBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:orientation="vertical">
 
         <ImageView
@@ -44,65 +58,7 @@
             android:src="@mipmap/ic_launcher" />
     </LinearLayout>
 
-
-    <!--<com.google.android.gms.ads.AdView-->
-    <!--android:id="@+id/adView1"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_below="@id/header"-->
-    <!--android:layout_centerHorizontal="true"-->
-    <!--android:visibility="gone"-->
-    <!--ads:adSize="BANNER"-->
-    <!--ads:adUnitId="@string/banner_ad_unit_id_1"></com.google.android.gms.ads.AdView>-->
-
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/deleteBtn"
-        android:layout_centerHorizontal="true"
-        android:visibility="gone"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/banner_ad_unit_id_1"></com.google.android.gms.ads.AdView>
-
-    <!--<com.google.android.gms.ads.AdView-->
-    <!--android:id="@+id/adView3"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_above="@id/deleteBtn"-->
-    <!--android:layout_centerHorizontal="true"-->
-    <!--android:visibility="invisible"-->
-    <!--ads:adSize="BANNER"-->
-    <!--ads:adUnitId="@string/banner_ad_unit_id_3"></com.google.android.gms.ads.AdView>-->
-
-    <!--<com.google.android.gms.ads.AdView-->
-    <!--android:id="@+id/adView4"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_above="@id/deleteBtn"-->
-    <!--android:layout_centerHorizontal="true"-->
-    <!--android:visibility="invisible"-->
-    <!--ads:adSize="BANNER"-->
-    <!--ads:adUnitId="@string/banner_ad_unit_id_4"></com.google.android.gms.ads.AdView>-->
-
-    <!--<com.google.android.gms.ads.AdView-->
-    <!--android:id="@+id/adView5"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_above="@id/deleteBtn"-->
-    <!--android:layout_centerHorizontal="true"-->
-    <!--android:visibility="invisible"-->
-    <!--ads:adSize="BANNER"-->
-    <!--ads:adUnitId="@string/banner_ad_unit_id_5"></com.google.android.gms.ads.AdView>-->
+    <include layout="@layout/include_ad_layout" />
 
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/content_rv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/adView2"
-        android:layout_below="@id/header"
-        android:layout_marginTop="8dp" />
-
-
-</RelativeLayout>
+</LinearLayout>

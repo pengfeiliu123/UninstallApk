@@ -4,35 +4,25 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageStats;
-import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
-import android.os.RemoteException;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.format.Formatter;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-
-import java.lang.reflect.Method;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 //import com.android.pm.IPackageStatsObserver;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     ArrayList<AppInfo> appList = new ArrayList<AppInfo>();
     RecyclerView recyclerView;
@@ -46,13 +36,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initViews();
-
         initAds();
     }
 
     private void initViews() {
 
         recyclerView = (RecyclerView) findViewById(R.id.content_rv);
+        btnDelete = (LinearLayout) findViewById(R.id.deleteBtn);
+        btnCheckAll = (CheckBox) findViewById(R.id.checkAll);
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
         appAdapter = new AppAdapter(this, appList);
@@ -60,23 +52,10 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(appAdapter);
         appAdapter.notifyDataSetChanged();
 
-        btnDelete = (LinearLayout) findViewById(R.id.deleteBtn);
-        btnDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (appAdapter.getDatas() != null && appAdapter.getDatas().size() > 0) {
-                    uninstallApks(appAdapter.getDatas());
-                } else {
-                    Toast.makeText(MainActivity.this, R.string.toast_choose, Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-        btnCheckAll = (CheckBox) findViewById(R.id.checkAll);
+        btnDelete.setOnClickListener(this);
         btnCheckAll.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                //....
                 if (isChecked) {
                     appAdapter.selectedAllDatas();
                     appAdapter.notifyDataSetChanged();
@@ -86,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+
     }
 
     private void initAds() {
@@ -158,5 +139,29 @@ public class MainActivity extends AppCompatActivity {
 
         Collections.sort(appList);
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.deleteBtn:
+                uninstallMethod();
+                break;
+
+        }
+    }
+
+    private void uninstallMethod() {
+        if (appAdapter.getDatas() != null && appAdapter.getDatas().size() > 0) {
+            uninstallApks(appAdapter.getDatas());
+        } else {
+            Toast.makeText(MainActivity.this, R.string.toast_choose, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private BigDecimal parseApkSize(int size) {
+        BigDecimal bd = new BigDecimal((double) size / (1024 * 1024));
+        BigDecimal setScale = bd.setScale(2, BigDecimal.ROUND_DOWN);
+        return setScale;
     }
 }
